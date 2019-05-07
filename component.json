@@ -1,0 +1,220 @@
+{
+    "title": "ApiManagementClient",
+    "description": "Use these REST APIs for performing operations on Group entity in your Azure API Management deployment. Groups are used to manage the visibility of products to developers. Each API Management service instance comes with the following immutable system groups whose membership is automatically managed by API Management.  - **Administrators** - Azure subscription administrators are members of this group. - **Developers** - Authenticated developer portal users fall into this group. - **Guests** - Unauthenticated developer portal users are placed into this group. In addition to these system groups, administrators can create custom groups or [leverage external groups in associated Azure Active Directory tenants](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-aad#how-to-add-an-external-azure-active-directory-group). Custom and external groups can be used alongside system groups in giving developers visibility and access to API products. For example, you could create one custom group for developers affiliated with a specific partner organization and allow them access to the APIs from a product containing relevant APIs only. A user can be a member of more than one group.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/apimanagement-apimgroups/2018-06-01-preview/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow.",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Group_ListByService": {
+            "main": "./lib/actions/Group_ListByService.js",
+            "title": "Lists a collection of groups defined within a service instance.",
+            "description": "Lists a collection of groups defined within a service instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Group_ListByService.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Group_Delete": {
+            "main": "./lib/actions/Group_Delete.js",
+            "title": "Deletes specific group of the API Management service instance.",
+            "description": "Deletes specific group of the API Management service instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Group_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Group_Get": {
+            "main": "./lib/actions/Group_Get.js",
+            "title": "Gets the details of the group specified by its identifier.",
+            "description": "Gets the details of the group specified by its identifier.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Group_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Group_GetEntityTag": {
+            "main": "./lib/actions/Group_GetEntityTag.js",
+            "title": "Gets the entity state (Etag) version of the group specified by its identifier.",
+            "description": "Gets the entity state (Etag) version of the group specified by its identifier.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Group_GetEntityTag.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Group_Update": {
+            "main": "./lib/actions/Group_Update.js",
+            "title": "Updates the details of the group specified by its identifier.",
+            "description": "Updates the details of the group specified by its identifier.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Group_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Group_CreateOrUpdate": {
+            "main": "./lib/actions/Group_CreateOrUpdate.js",
+            "title": "Creates or Updates a group.",
+            "description": "Creates or Updates a group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Group_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GroupUser_List": {
+            "main": "./lib/actions/GroupUser_List.js",
+            "title": "Lists a collection of user entities associated with the group.",
+            "description": "Lists a collection of user entities associated with the group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GroupUser_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GroupUser_Delete": {
+            "main": "./lib/actions/GroupUser_Delete.js",
+            "title": "Remove existing user from existing group.",
+            "description": "Remove existing user from existing group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GroupUser_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GroupUser_CheckEntityExists": {
+            "main": "./lib/actions/GroupUser_CheckEntityExists.js",
+            "title": "Checks that user entity specified by identifier is associated with the group entity.",
+            "description": "Checks that user entity specified by identifier is associated with the group entity.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GroupUser_CheckEntityExists.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GroupUser_Create": {
+            "main": "./lib/actions/GroupUser_Create.js",
+            "title": "Add existing user to existing group",
+            "description": "Add existing user to existing group",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GroupUser_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

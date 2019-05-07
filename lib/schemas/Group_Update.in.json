@@ -1,0 +1,74 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "serviceName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50,
+            "pattern": "^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$"
+        },
+        "groupId": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256,
+            "pattern": "^[^*#&+:<>?]+$"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Parameters supplied to the Update Group operation.",
+            "properties": {
+                "properties": {
+                    "description": "Group entity update contract properties.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "description": {
+                            "description": "Group description.",
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "description": "Group name.",
+                            "maxLength": 300,
+                            "minLength": 1,
+                            "type": "string"
+                        },
+                        "externalId": {
+                            "description": "Identifier of the external groups, this property contains the id of the group from the external identity provider, e.g. for Azure Active Directory `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the value is null.",
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "Group type.",
+                            "enum": [
+                                "custom",
+                                "system",
+                                "external"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": false,
+                                "name": "GroupType"
+                            }
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "If_Match": {
+            "required": true,
+            "type": "string"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
